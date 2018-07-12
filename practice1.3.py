@@ -1,3 +1,5 @@
+# Question：第一章例题3
+# Solution：
 import random
 
 guanci = ['a','the']
