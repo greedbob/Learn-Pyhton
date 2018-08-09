@@ -1,5 +1,6 @@
 # Question：第一章例题5，输入数字并输出列表、均值、最小值、最大值；新增了排序和计算中位数
 # Solution：冒泡排序
+try:
     Num = []
     sum = 0
     while True:
