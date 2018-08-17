@@ -1,6 +1,6 @@
 # Question:第三章 练习1 将external_sites.py中的字典换成默认字典
-# Solution:
-# Answer:默认字典需要创建，创建时新项应为集合set
+# Solution:默认字典需要创建，创建时新项应为集合set
+# Answer:
 
 import sys
 import collections
