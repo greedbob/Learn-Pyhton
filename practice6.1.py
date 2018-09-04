@@ -55,15 +55,57 @@ class Point:
         return "({0.x!r}, {0.y!r})".format(self)
 
     def __add__(self, other):
-        '''sum x and y of two points separately
+        """sum x and y of two points separately
 
-        >>> Point(1, 2) + Point(3, 4)
-        >>> Point(4, 6)
-        '''
+        >>> p = Point(1, 2) + Point(3, 4)
+        >>> p
+        Point(4, 6)
+        """
         return Point(self.x + other.x, self.y + other.y)
+
+    def __iadd__(self, other):
+        """
+
+        :param other:
+        :return:
+        """
+        self.x += other.x
+        self.y += other.y
+        return self
+
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+    def __isub__(self, other):
+        self.x -= other.x
+        self.y -= other.y
+        return self
+
+    def __mul__(self, other):
+        return Point(self.x * other.x, self.y * other.y)
+
+    def __imul__(self, other):
+        self.x *= other.x
+        self.y *= other.y
+        return self
+
+    def __truediv__(self, other):
+        return Point(self.x / other.x, self.y / other.y)
+
+    def __itruediv__(self, other):
+        self.x /= other.x
+        self.y /= other.y
+        return self
+
+    def __floordiv__(self, other):
+        return Point(self.x // other.x, self.y // other.y)
+
+    def __ifloordiv__(self, other):
+        self.x //= other.x
+        self.y //= other.y
+        return self
 
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod()
