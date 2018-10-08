@@ -1,7 +1,11 @@
-### py学习碎片
-
 ---
-<pre><code>
+title: Python3学习碎片
+date: 2018-08-18 12:00:00
+tags: [Python]
+category: [编程]
+---
+
+<pre><code>《Programing in Python3》
 # Question:
 # Solution:
 # Answer:
@@ -21,7 +25,7 @@ sys.argv[2] 命令行中输入的第二个参数
 以此类推...
 
 sys.argv[2:] 可以用分片操作来得到所有输入的参数
-
+ <!-- more -->
 ---
 * zip() 函数
 
@@ -29,9 +33,11 @@ sys.argv[2:] 可以用分片操作来得到所有输入的参数
 
 我们可以使用 list() 转换来输出列表。
 
-如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。
+如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同。
 
-<pre><code>>>>a = [1,2,3]
+利用 * 号操作符，可以将元组解压为列表。
+
+<pre><code>>>> a = [1,2,3]
 >>> b = [4,5,6]
 >>> c = [4,5,6,7,8]
 >>> zipped = zip(a,b)     # 返回一个对象
@@ -64,24 +70,6 @@ list 的 sort 方法返回的是对已经存在的列表进行操作，
 
 > Reference：http://www.runoob.com/python/python3-func-sorted.html
 
----
-* zip() 函数
-
-用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。
-
-如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。
-
-<pre><code>>>>a = [1,2,3]
->>> b = [4,5,6]
->>> c = [4,5,6,7,8]
->>> zipped = zip(a,b)     # 打包为元组的列表
-[(1, 4), (2, 5), (3, 6)]
->>> zip(a,c)              # 元素个数与最短的列表一致
-[(1, 4), (2, 5), (3, 6)]
->>> zip(*zipped)          # 与 zip 相反，*zipped 可理解为解压，返回二维矩阵式
-[(1, 2, 3), (4, 5, 6)]</code></pre>
-
-> Reference：http://www.runoob.com/python/python-func-zip.html
 ---
 - sys.stdout和sys.stderr 
 
@@ -137,3 +125,32 @@ sys.stdin.readline( )[:-1]</code></pre>
 > Reference：https://www.cnblogs.com/keye/p/7859181.html
 > Reference：https://www.cnblogs.com/silvi/p/7260506.html
 ---
+optparse.OptionParser模块
+<pre><code>from optparse import OptionParser
+parser = OptionParser(usage=usage) #传入值在被调用时打印
+parser.add_option(opt_str, ..., attr=value, ...)
+parser.set_defaults(dest=..., ...)
+options, args = parser.parse_args()</code></pre>
+
+- add_option中最重要的四个option的属性是：
+action,type,dest(destination),help。
+    - action:存储方式，分为三种store、store_false、store_true
+        - store: 如果输入参数（如'-v'）存在，则变量被赋值为输入参数后的内容；如果输入参数不存在，则变量为None
+        - store_true: 如果输入参数存在（如'-v'），则变量被赋值为True
+        - store_false: 如果输入参数存在（如'-v'），则变量被赋值为False
+        - 注：如果action="store_true"时，变量的值只与是否'-v'有关。即为True或False，不会受输入参数后内容的影响。
+    - dest:存储的变量
+    - type:指定变量类型（int/float/string）
+    - default:默认值
+    - help:帮助信息
+    
+- set_defaults()为变量设置默认值
+- parse_args()返回两个值，一个是选项options（如：-f）,
+另一个是参数args,即除选项options以外的值（如：test.txt）
+
+---
+<pre><code>import datetime, os
+t = os.path.getmtime(filename) # 返回文件最后修改的时间戳 1535512877.73176340
+tt = datetime.datetime.fromtimestamp(t) # 返回文件最后修改的时间 2018-08-29 11:21:17.731763
+ttt = tt.strftime('%Y-%m-%d %H:%M:%S') # 格式化时间 2018-08-29 11:21:17
+ttt = strftime('%Y-%m-%d %H:%M:%S', tt) #另一种形式</code></pre>
