@@ -1,7 +1,8 @@
 # Learn-Pyhton
-> 记录读书看教程过程重写过的练习题
+> 记录写过的一些练习题
 
-Book | Mark
+Books | Mark
 :- | :-:
 *Programming in Pyhton3* | :white_check_mark:
 *Grokking Algorithms* | :white_check_mark:
+*LeetCode* | :construction:
